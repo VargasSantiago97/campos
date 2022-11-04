@@ -1,0 +1,33 @@
+<p-button (click)="showModalDialog()" styleClass="p-button-sm p-button-success" icon="pi pi-user" label="Crear Nuevo"></p-button>
+
+
+<div class="card">
+    <p-table [value]="products1" styleClass="p-datatable-sm">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
+                <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="accion">Opcion</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.code}}</td>
+                <td>{{product.price | currency: 'USD'}}</td>
+                <td>
+                    <p-button (click)="eliminar(product.code)" class="chiqu" label="Eliminar" icon="pi pi-user-minus" styleClass="p-button-sm p-button-danger"></p-button>
+                    <p-button (click)="editar(product.code)" class="chiqu" label="Editar" icon="pi pi-user-edit" styleClass="p-button-sm"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog header="Socio" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}"
+    [draggable]="true" [resizable]="true">
+    
+
+    <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
