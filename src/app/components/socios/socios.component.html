@@ -1,22 +1,24 @@
-<p-button (click)="showModalDialog()" styleClass="p-button-sm p-button-success" icon="pi pi-user" label="Crear Nuevo"></p-button>
+<p-button (click)="crear()" styleClass="p-button-sm p-button-success" icon="pi pi-user" label="Crear Nuevo"></p-button>
 
 
 <div class="card">
     <p-table [value]="products1" styleClass="p-datatable-sm">
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="alias">Alias <p-sortIcon field="alias"></p-sortIcon></th>
+                <th pSortableColumn="razon_social">Razon Social <p-sortIcon field="razon_social"></p-sortIcon></th>
+                <th pSortableColumn="cuit">CUIT <p-sortIcon field="cuit"></p-sortIcon></th>
                 <th pSortableColumn="accion">Opcion</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product>
             <tr>
-                <td>{{product.code}}</td>
-                <td>{{product.price | currency: 'USD'}}</td>
+                <td>{{product.alias}}</td>
+                <td>{{product.razon_social}}</td>
+                <td>{{product.cuit}}</td>
                 <td>
-                    <p-button (click)="eliminar(product.code)" class="chiqu" label="Eliminar" icon="pi pi-user-minus" styleClass="p-button-sm p-button-danger"></p-button>
-                    <p-button (click)="editar(product.code)" class="chiqu" label="Editar" icon="pi pi-user-edit" styleClass="p-button-sm"></p-button>
+                    <p-button (click)="eliminar(product.id)" class="chiqu" label="Eliminar" icon="pi pi-user-minus" styleClass="p-button-sm p-button-danger"></p-button>
+                    <p-button (click)="editar(product.id)" class="chiqu" label="Editar" icon="pi pi-user-edit" styleClass="p-button-sm"></p-button>
                 </td>
             </tr>
         </ng-template>
@@ -26,8 +28,25 @@
 <p-dialog header="Socio" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}"
     [draggable]="true" [resizable]="true">
     
+    <div class="field">
+        <label for="username1" class="block">Alias</label>
+        <input id="username1" type="username" aria-describedby="username1-help" pInputText [(ngModel)]="socio.alias" />
+        <small id="username1-help" class="block">Alias identificador.</small>
+    </div>
+    
+    <div class="field">
+        <label for="username1" class="block">Razon Social</label>
+        <input id="username1" type="username" aria-describedby="username1-help" pInputText [(ngModel)]="socio.razon_social" />
+    </div>
+    
+    <div class="field">
+        <label for="username1" class="block">CUIT</label>
+        <input id="username1" type="username" aria-describedby="username1-help" pInputText [(ngModel)]="socio.cuit" />
+    </div>
+
 
     <ng-template pTemplate="footer">
-    <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+    <p-button (click)="guardar()" styleClass="p-button-sm p-button-success" icon="pi pi-user" label="Guardar"></p-button>
+
     </ng-template>
 </p-dialog>
