@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 //PRIMENG
 import {ButtonModule} from 'primeng/button';
@@ -14,7 +15,8 @@ import { SociosComponent } from './components/socios/socios.component';
 import {TableModule} from 'primeng/table';
 import {DialogModule} from 'primeng/dialog';
 import { InputTextModule } from "primeng/inputtext";
-
+import { SidebarModule } from 'primeng/sidebar';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,15 @@ import { InputTextModule } from "primeng/inputtext";
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
 
     ButtonModule,
     MenubarModule,
     TableModule,
     DialogModule,
-    InputTextModule
+    InputTextModule,
+    SidebarModule,
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]

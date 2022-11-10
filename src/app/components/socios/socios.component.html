@@ -50,3 +50,12 @@
 
     </ng-template>
 </p-dialog>
+
+<p-button type="button" (click)="visibleSidebar1 = true" label="Side bar" styleClass="p-button-success"></p-button>
+
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+    <h1 style="font-weight:normal">Left Sidebar</h1>
+    <p-button type="button" (click)="visibleSidebar1 = false" label="Save" styleClass="p-button-success"></p-button>
+</p-sidebar>
+
+<p-fileUpload name="myfile[]" [customUpload]="true" (uploadHandler)="myUploader($event)"></p-fileUpload>

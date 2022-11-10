@@ -16,6 +16,7 @@ export class SociosComponent implements OnInit {
     cuit: 0,
   };
   displayModal: boolean = false;
+  visibleSidebar1: boolean = false;
 
   constructor() { }
 
@@ -70,5 +71,16 @@ export class SociosComponent implements OnInit {
       }    
     }
   }
+
+  async myUploader(event:any) {
+    const formData = new FormData();
+
+    for (let file of event.files) {
+      formData.append('field', file);
+  }
+  
+    const record = await client.records.create('posts', formData);
+    console.log(record)
+}
 
 }
