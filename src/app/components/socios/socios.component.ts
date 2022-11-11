@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import pocketbaseEs from 'pocketbase';
+import { MessageService } from 'primeng/api';
 const client = new pocketbaseEs('http://127.0.0.1:8090');
 
 @Component({
@@ -17,8 +18,10 @@ export class SociosComponent implements OnInit {
   };
   displayModal: boolean = false;
   visibleSidebar1: boolean = false;
+  multiplee: boolean = true;
+  uploadedFiles: any[] = [];
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.iniciar()
@@ -77,7 +80,10 @@ export class SociosComponent implements OnInit {
 
     for (let file of event.files) {
       formData.append('field', file);
-  }
+      this.uploadedFiles.push(file);
+    }
+
+    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   
     const record = await client.records.create('posts', formData);
     console.log(record)

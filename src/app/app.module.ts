@@ -17,6 +17,9 @@ import {DialogModule} from 'primeng/dialog';
 import { InputTextModule } from "primeng/inputtext";
 import { SidebarModule } from 'primeng/sidebar';
 import {FileUploadModule} from 'primeng/fileupload';
+import { MessageService } from 'primeng/api';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [
@@ -37,9 +40,11 @@ import {FileUploadModule} from 'primeng/fileupload';
     DialogModule,
     InputTextModule,
     SidebarModule,
-    FileUploadModule
+    FileUploadModule,
+    MessagesModule,
+    MessageModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
